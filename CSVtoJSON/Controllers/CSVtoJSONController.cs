@@ -25,7 +25,7 @@ namespace CSVtoJSON.Controllers
         public HttpResponseMessage Post([FromBody] string body)
         {
             JsonResult resultSet = new JsonResult();
-            string[] csvLines = body.Split('\r');
+            string[] csvLines = body.Split('\r').Split('\n').Split('\r\n');
             var headers = csvLines[0].Split(',').ToList<string>();
             foreach(var line in csvLines.Skip(1))
             {
